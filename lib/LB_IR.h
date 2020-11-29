@@ -31,7 +31,7 @@ version  : ¼ûÎÄ¼þÎ²¶Ë
  typedef struct
 {
 	INT8U  NowVoltage;
-	INT8U  Nowcount;
+	INT16U  Nowcount;
 	INT8U  ReadIRBit;
 	INT8U  ReadIRFlag;
 	INT8U  ReadIRByte;

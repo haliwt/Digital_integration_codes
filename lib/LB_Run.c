@@ -63,19 +63,19 @@ void AutoCharge(void)
 			#endif 
             else if(RunMs < 50 && conline ==1)
 		    {	
-				    SetXMotor(1,10,15,1,1,10,15,1);//SetXMotor(2,10,15,2,2,10,15,2);
+				    SetXMotor(1,10,20,1,1,10,20,1);//SetXMotor(2,10,15,2,2,10,15,2);
 			        SetMotorcm(1,50);
 					conline=0;
 					
 			}
 			else if(RunMs < 10 && conline ==2 ){
-					SetXMotor(1,5,5,1,1,5,5,1);//SetXMotor(2,5,5,2,2,5,5,2);
+					SetXMotor(1,10,10,1,1,10,10,1);//SetXMotor(2,5,5,2,2,5,5,2);
 			        SetMotorcm(1,50);
 					conline =0;
 					
             }
 			else if(RunMs < 5 ){
-					SetXMotor(1,1,1,1,1,1,1,1);//SetXMotor(2,1,1,2,2,1,1,2);
+					SetXMotor(1,5,5,1,1,5,5,1);//SetXMotor(2,1,1,2,2,1,1,2);
 			        SetMotorcm(1,50);
 					conline =0;
 					
@@ -2406,7 +2406,7 @@ void CheckMode(INT8U Key)
 	   break;
 	   //Æô¶¯/ÔÝÍ£
 	   case 2:
-				
+				Mode=3;
 	  
 	           if(Mode<4)
 			   {

@@ -44,7 +44,7 @@ void Init_IR()
 
 	P1M6 = 0x68;			        	//P16设置为带SMT上拉输入
 
- 	PITS3 |= 0x30;						//14 
+ 	PITS3 |= 00;//0x30;						//14 
     PINTE1 |= 0x40;						//使能INT14
 
 	IE2 |= 0x01;						//打开INT8-17中断
@@ -55,7 +55,7 @@ void Init_IR()
 }
 void Remote1_Count(void)
 {
-	if(Remote1_ReadIR.ReadIRFlag==1)
+  if(Remote1_ReadIR.ReadIRFlag==1)
 	{
 		Remote1_ReadIR.Nowcount++;
 		if(Remote1_ReadIR.Nowcount>200)
@@ -63,6 +63,7 @@ void Remote1_Count(void)
 			Remote1_ReadIR.ReadIRFlag=2;
 		}
 	}
+	
 }
 
 
@@ -110,7 +111,7 @@ void Read_Remote1IR(void)
 //	  SBUF=Usart1Send[SendCount];
 
 		Remote1_ReadIR.ReadIRBit++;
-		if(Remote1_ReadIR.ReadIRBit>80)
+		if(Remote1_ReadIR.ReadIRBit>32)//if(Remote1_ReadIR.ReadIRBit>80)
 			Remote1_ReadIR.ReadIRFlag=2;
 	}
 }
@@ -127,11 +128,11 @@ void CheckXReadIR(ReadIRByte *P)
 	{		
 		P->ReadIRByte=0;
 		k=0;
-		if(P->ReadIRData[P->AABit]>120)
+		if(P->ReadIRData[P->AABit]>1)//if(P->ReadIRData[P->AABit]>120)
 		{
 			for(P->AABit=1; P->AABit<P->ReadIRBit;P->AABit++)
 			{				     
-					 if((P->ReadIRData[P->AABit]>0)&&(P->ReadIRData[P->AABit]<=14))
+					 if((P->ReadIRData[P->AABit]>0)&&(P->ReadIRData[P->AABit]<=7))
 					 {
 					 	P->ReadIRByte<<=1;
 					    k++;
@@ -144,7 +145,7 @@ void CheckXReadIR(ReadIRByte *P)
 
 					    }
 					 }
-					 if((P->ReadIRData[P->AABit]>14)&&(P->ReadIRData[P->AABit]<28))
+					 if((P->ReadIRData[P->AABit]>7)&&(P->ReadIRData[P->AABit]<28))
 					 {
 					 	P->ReadIRByte<<=1;
 						P->ReadIRByte|=1;
@@ -178,22 +179,10 @@ void CheckXReadIR(ReadIRByte *P)
 			    P->ReadIRData[P->AABit]=0;
 			}
 		}
-		else if((P->ReadIRData[P->AABit]>105)&&(P->ReadIRData[P->AABit]<115))
-		{
-			P->ReadIRFlag=3;
-		}
-		else
-		{
-			Remote1_ReadIR.ReadIRFlag=0;
-			for(P->AABit=0; P->AABit<80; P->AABit++)
-			{
-			     P->ReadIRData[P->AABit]=0;
-			}
-		}		
+	
 	}
+
 }
-
-
 /****************************************************************
 ***
 *Function Name:INT8U CheckHandsetIR()

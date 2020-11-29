@@ -115,7 +115,7 @@ unsigned int gui_oldT5Value = 0; 		//T5 ?????????
 
 void main(void)
 {
-	static INT8U  KK,KB;
+	static INT8U  KK,KB,CB;
 	InitSysclk(1);
 
 	InitT1();
@@ -157,22 +157,26 @@ void main(void)
 	{
 
      KK=ReadKey();
-	 if(KK==4 || KB==1 ){
-		   CheckHandsetIR();
-		   AutoCharge();
-		   KB=1;
-	 }
-	 else{
-	  CheckMode(KK); //Mode be selected
-	  CheckGround();
-	  CheckRun();  //Motor run
-	}
-	
+	 CB=Batter_Charging();
+	 if(CB ==0){
+		     if(KK==4 || KB==1 ){
+			   CheckHandsetIR();
+			   AutoCharge();
+			   KB=1;
+		 }
+		 else{
+		  CheckMode(KK); //Mode be selected
+		  CheckGround();
+		  CheckRun();  //Motor run
+		}
+	  }
 
 	}
 
 }
 
+/************************************************************************
+*************************************************************************/
 void INT8_17_Rpt() interrupt INT8_17_VECTOR 
 {
 	if(PINTF2&0x01)						//判断INT15中断标志位
@@ -353,14 +357,13 @@ void TIMER5_Rpt(void) interrupt T5_VECTOR
 	#endif 
 
     if(InterruptTime >10){  //>6
-					//  Usart1Send[0]=2;
-					//  Usart1Send[1]=gui_T5Value ;//Remote1_ReadIR.ReadIRData[Remote1_ReadIR.ReadIRBit];
-                    //  Usart1Send[2]=Remote1_ReadIR.Interrupt_IR2  ;//0xff;
-					//  SendCount=1;
-					//  SBUF=Usart1Send[SendCount];
+					  //Usart1Send[0]=2;
+					  //Usart1Send[1]=gui_T5Value ;//Remote1_ReadIR.ReadIRData[Remote1_ReadIR.ReadIRBit];
+                     // Usart1Send[2]=Remote1_ReadIR.Interrupt_IR2  ;//0xff;
+					 // SendCount=1;
+					 // SBUF=Usart1Send[SendCount];
 					  InterruptTime =0;
-                      // Remote1_ReadIR.ReadA_Time++;
-					  // Remote1_ReadIR.ReadASTAR[Remote1_ReadIR.ReadA_Time]=Remote1_ReadIR.Interrupt_IR2;
+                   
 					  
 					   Remote1_ReadIR.Interrupt_IR2=0;
 					  

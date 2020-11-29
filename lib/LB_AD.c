@@ -75,6 +75,7 @@ void SetADINT(void)
 void  SetAD(INT8U ADChanel)
 {
   code INT8U ADCC[8]={2,3,4,5,6,7,12,13};
+ 
   SeleADChanel(ADCC[ADChanel]);
   SetADINT();
   StartAD();
@@ -154,25 +155,27 @@ void CheckGround()
    if(ADFlag)
    {
    	   GroundAD[0][0]=(AD5ms[3]>>4);
-	   GroundAD[1][0]=(AD5ms[2]>>4);
+	  // GroundAD[1][0]=(AD5ms[2]>>4);
 	   GroundAD[2][0]=(AD5ms[1]>>4);
 	   ADFlashFlag=0;
 	 //SBUF=GroundAD[0][0];
+#if 1
     if(GroundAD[0][1]>GroundAD[0][0])
 	{
        GroundAD100Ms[0][ADTime]=GroundAD[0][1]-GroundAD[0][0];
 	}
 	else
        GroundAD100Ms[0][ADTime]=GroundAD[0][0]-GroundAD[0][1];
-
+#endif 
+#if 0
     if(GroundAD[1][1]>GroundAD[1][0])
 	{
        GroundAD100Ms[1][ADTime]=GroundAD[1][1]-GroundAD[1][0];
 	}
 	else
 	  GroundAD100Ms[1][ADTime]=GroundAD[1][0]-GroundAD[1][1];
-
-    if(GroundAD[2][1]>GroundAD[2][0])
+#endif 
+    if(GroundAD[2][1]>GroundAD[2][0])  //R_GROUND P0.3 INT 1
 	{
 
        GroundAD100Ms[2][ADTime]=GroundAD[2][1]-GroundAD[2][0];
@@ -185,7 +188,7 @@ void CheckGround()
    {
    	  ADTime=0;
 	  GroundDp[0]=(GroundAD100Ms[0][0]+GroundAD100Ms[0][2]+GroundAD100Ms[0][4]+GroundAD100Ms[0][6])/4;
-	  GroundDp[1]=(GroundAD100Ms[1][0]+GroundAD100Ms[1][2]+GroundAD100Ms[1][4]+GroundAD100Ms[1][6])/4;
+	 // GroundDp[1]=(GroundAD100Ms[1][0]+GroundAD100Ms[1][2]+GroundAD100Ms[1][4]+GroundAD100Ms[1][6])/4;
 	  GroundDp[2]=(GroundAD100Ms[2][0]+GroundAD100Ms[2][2]+GroundAD100Ms[2][4]+GroundAD100Ms[2][6])/4;
 
    }
@@ -197,7 +200,7 @@ void CheckGround()
    else
    {
    	   GroundAD[0][1]=(AD5ms[3]>>4);
-	   GroundAD[1][1]=(AD5ms[2]>>4);
+	  // GroundAD[1][1]=(AD5ms[2]>>4);
 	   GroundAD[2][1]=(AD5ms[1]>>4);
 	   ADFlashFlag=0;
    }

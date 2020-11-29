@@ -27,7 +27,7 @@ version  : ¼ûÎÄ¼şÎ²¶Ë
 #else
 #define  KAKA_Run_EXT extern
 #endif
-#define  GroundMin  8 //12
+#define  GroundMin  2  //12
 
 KAKA_Run_EXT  idata  INT16U RunMs;
 KAKA_Run_EXT  idata  INT16U EdgeErrordelayTime;

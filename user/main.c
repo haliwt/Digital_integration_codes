@@ -156,29 +156,15 @@ void main(void)
 	while(1)
 	{
 
-
      
+
 	 KK=ReadKey();
 	 
-	 if(KK==3 || KeyLock ==1){//if(KK==0)
-	       
-	       CheckHandsetIR();
-	       AutoCharge();
-	       KeyLock =1;
-		 
-	 }
-	else if(KeyLock !=1){
-		  if(Batter_Charging()==1)
-		  {
-
-		  }
-		  else {
-			  CheckMode(KK); //Mode be selected
-			  CheckGround();
-			  CheckRun();  //Motor run
-		  }
-	  }
-	   
+	
+	  CheckMode(KK); //Mode be selected
+	  CheckGround();
+	  CheckRun();  //Motor run
+	
 	
 
 	}

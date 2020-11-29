@@ -43,6 +43,7 @@ version  : ¼ûÎÄ¼þÎ²¶Ë
 	INT8U  ReadIRData[80];
 	INT8U  Runcontrol;
 	INT8U  Interrupt_IR2; //WT.EDIT 
+
 } ReadIRByte ;
 
 KAKA_IR_EXT	 xdata ReadIRByte Remote1_ReadIR;

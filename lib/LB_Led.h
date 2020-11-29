@@ -28,6 +28,8 @@ version  : ¼ûÎÄ¼þÎ²¶Ë
 #define  KAKA_Led_EXT extern
 #endif
 
+
+KAKA_Led_EXT  INT8U  KeyLock;//WT.EDIT 
 KAKA_Led_EXT  INT8U  ImpStatus;
 KAKA_Led_EXT  INT8U  BuzzerFlag;
 KAKA_Led_EXT  INT8U  BuzzerTime;

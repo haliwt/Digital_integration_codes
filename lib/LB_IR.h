@@ -50,6 +50,7 @@ KAKA_IR_EXT	 xdata ReadIRByte Remote1_ReadIR;
 
 
 KAKA_IR_EXT void Init_IR();
+KAKA_IR_EXT void Iint_T5(void);
 
 KAKA_IR_EXT void Remote1_Count(void);
 KAKA_IR_EXT void Read_Remote1IR();

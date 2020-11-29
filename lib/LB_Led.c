@@ -123,7 +123,7 @@ INT8U ReadKey(void)
   static INT8U  K1temp,K2temp,K12temp;
   INT8U t_Key;
   t_Key=0;
-  if(P3_2==0 && P0_0==0){  //WT.EDIT 
+  if(P3_2==0 && P0_0==0){  //WT.EDIT --right key
 		if(K12temp<200)
 	   	 K12temp++;
 		 BuzzerON();

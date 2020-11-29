@@ -119,6 +119,7 @@ void main(void)
 	InitSysclk(1);
 
 	InitT1();
+	Iint_T5(); //WT.EDIT 
 	InitADIO();
 	Init_MotorSpeed();
     InitMotorIO();
@@ -154,8 +155,13 @@ void main(void)
 	ModeBackup=0;
 	while(1)
 	{
-	  KK=ReadKey();
-	  if(KK==0x04){//if(KK==0)
+
+
+         CheckHandsetIR();
+	       AutoCharge();
+	#if 0
+	 KK=ReadKey();
+	 if(KK==0x04){//if(KK==0)
 	       CheckHandsetIR();
 	       AutoCharge();
 		 
@@ -165,7 +171,7 @@ void main(void)
 		  CheckGround();
 		  CheckRun();  //Motor run
 	  }
-	   
+	  #endif   
 	
 
 	}

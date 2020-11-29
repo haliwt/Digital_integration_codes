@@ -506,7 +506,7 @@ void  CheckRun()
 		}
 		break;
 
-		case 0x0D: //To check wheel and barrier wheel of current value
+        case 0x0D: //To check wheel and barrier wheel of current value
 		{
 
 			if((LeftMoveMotorData.Flag==1)||(RightMoveMotorData.Flag==1))
@@ -2393,6 +2393,9 @@ void CheckMode(INT8U Key)
      
 
 	   case 1:
+                Mode = 8 ;
+			   RunMs = 0x64;
+	   
 	   case 4:
 	   {
 	    if(Mode!=2)

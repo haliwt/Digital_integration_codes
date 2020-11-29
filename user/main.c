@@ -115,7 +115,7 @@ unsigned int gui_oldT5Value = 0; 		//T5 ?????????
 
 void main(void)
 {
-	static INT8U  KK;
+	static INT8U  KK,KB;
 	InitSysclk(1);
 
 	InitT1();
@@ -159,12 +159,16 @@ void main(void)
      
 
 	 KK=ReadKey();
-	 
-	
+	 if(KK==4 || KB==1 ){
+		   CheckHandsetIR();
+		   AutoCharge();
+		   KB=1;
+	 }
+	else{
 	  CheckMode(KK); //Mode be selected
 	  CheckGround();
 	  CheckRun();  //Motor run
-	
+	}
 	
 
 	}

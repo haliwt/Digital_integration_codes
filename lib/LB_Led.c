@@ -117,13 +117,40 @@ void ReadIMP(void)
   ImpStatus=0;
 }
 /*****************************************************************
+**
+*Function Name:INT8U ReadKey(void)
+*Function :input key value 
+*
+*
+*
 *****************************************************************/
 INT8U ReadKey(void)
 {
   
-  static INT8U  K1temp,K2temp;
+  static INT8U  K1temp,K2temp,K12temp;
   INT8U t_Key;
   t_Key=0;
+
+  if(P3_2 ==0 && P0_0 ==0){
+  	
+		 K12temp++;
+       if(K12temp>200)
+	   if(P3_2 ==0 && P0_0 ==0){
+   	        K12temp=0;
+		   
+	       BuzzerON();
+		   return 4 ;
+	   }
+	   else{
+		   K12temp=0;
+		 
+	       BuzzerOff();
+		     return 0 ;
+
+	   }
+
+  }
+  else{
   if(P3_2==0)
   {
     if(K1temp<200)
@@ -163,6 +190,7 @@ INT8U ReadKey(void)
    //return(1);
 	 t_Key|=2;
   }
+  	}
   return(t_Key);  
  
 }

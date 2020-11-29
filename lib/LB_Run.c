@@ -33,7 +33,7 @@ void AutoCharge(void)
 {
       
 	  static INT8U left_ccw,right_cw,line ,costValue,cw_3,ccw_5,compareValue_1;
-	  static INT8U compareValue_2,runcw=0,conline=0;
+	  static INT8U compareValue_2,conline=0;
 	
 	   switch(Step){
 		case 0:
@@ -469,7 +469,8 @@ void AutoCharge(void)
 	*
 	*Function Name:void  CheckRun()
 	*Function :Motor run status 
-	*
+	*
+
 	*
 	*
 ***************************************************************************/

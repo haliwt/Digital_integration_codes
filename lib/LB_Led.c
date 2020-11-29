@@ -119,63 +119,77 @@ void ReadIMP(void)
 
 INT8U ReadKey(void)
 {
-
   static INT8U  K1temp,K2temp,K12temp;
-  INT8U t_Key;
+  static  INT8U t_Key;
   t_Key=0;
-  if(P3_2==0 && P0_0==0){  //WT.EDIT --right key
-		if(K12temp<200)
-	   	 K12temp++;
-		 BuzzerON();
- }
- else if(K12temp==190) //WT.EDIT 
- {
-	    K12temp=201;
-		t_Key|=4;
-		BuzzerOff();
+  if((P3_2==0) && (P0_0==0)){
+  	  K12temp ++;
+	  if(K12temp > 200){
+	       if((P3_2==0) && (P0_0==0)){
+		
+			   	 K12temp=0;
+				 t_Key = 3;
+				
+				 BuzzerON();
+			    return t_Key ;
+	      }
+		   else{
+	          K12temp=0;
+		      BuzzerOff();
+		      return 0;
+
+
+	       }
+	 }
+	
+
   }
-  else{
-	  if(P3_2==0)
-	  {
-	    if(K1temp<200)
-	   	 K1temp++;
+  else if(P3_2==0)
+  {
+    K1temp++;
+	if(K1temp > 200){
+	
+	  if(P3_2==0){
+	  
+   	     K1temp=0;
+		 t_Key =1 ;
+		
 		 BuzzerON();
-	  }
-	  else	
-	  {	  
+		  return t_Key;
+		}
+	    else{
+			 K1temp=0;
+		     BuzzerOff();
+		     return 0;
 
-	   	K1temp=0;
-		BuzzerOff();
-	  }
-
-	  if(P0_0==0)
-	  {
-	    if(K2temp<200)
-	   	 K2temp++;
-		 BuzzerON();
-	  }
-	  else	
-	  {	  
-
-	   	K2temp=0;
-		BuzzerOff();
-	  }
-
-
-	  if(K1temp==190)
-	  {
-	    K1temp=201;
-	   //return(1);
-		t_Key|=1;
-	  }
-	  if(K2temp==190)
-	  {
-	    K2temp=201;
-	   //return(1);
-		t_Key|=2;
-	  }
+	      }
+	}
+	
+	
+	 
   }
-  return(t_Key);  
+
+  else if(P0_0==0)
+  {
+    
+   	 K2temp++;
+	 if(K2temp>200){
+	 	if(P0_0==0){
+	 	 K2temp=0;
+		 t_Key=2;
+	     BuzzerON();
+		 return t_Key;
+	 	  }
+		else{
+			 K2temp=0;
+		     BuzzerOff();
+		     return 0;
+		}
+	 }
+  }
+
+  return t_Key ;
+ 
 }
 void InitPowerIn(void)
 {

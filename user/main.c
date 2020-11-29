@@ -168,9 +168,15 @@ void main(void)
 		 
 	 }
 	else if(KeyLock !=1){
-		  CheckMode(KK); //Mode be selected
-		  CheckGround();
-		  CheckRun();  //Motor run
+		  if(Batter_Charging()==1)
+		  {
+
+		  }
+		  else {
+			  CheckMode(KK); //Mode be selected
+			  CheckGround();
+			  CheckRun();  //Motor run
+		  }
 	  }
 	   
 	

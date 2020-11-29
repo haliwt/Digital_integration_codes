@@ -439,32 +439,53 @@ void AutoCharge(void)
 
 		case 20:
 
-		if(ReadPowerDCIn()){ //???????
-		              
-			               AllStop();
-						   Step =20 ;
-						   LedGreenON();
-			               Delay_ms(500);
-						   LedGreenOff();
-							Delay_ms(500);
-						   LedGreenON();
-			               Delay_ms(500);
-						   Step =20;
-						
-							if(Voltage>820)
-							{
-			                     Mode=0;
-						         Step=0;
-								LedGreenON();
-								Step=20;
-							}
+		 if(Batter_Charging()==1){
+		 	Step =20 ;
+			            
 		 }
-		else Step =0;
+		 else  Step =0;
 
 	   break;
 		
 	}
 }
+
+/***************************************************************************
+	*
+	*Function Name:void  CheckRun()
+	*Function :Motor run status 
+	*
+
+	*
+	*
+***************************************************************************/
+INT8U Batter_Charging(void)
+{
+
+  if(ReadPowerDCIn()){ //???????
+		              
+           AllStop();
+		   Step =20 ;
+		   LedGreenON();
+           Delay_ms(500);
+		   LedGreenOff();
+			Delay_ms(500);
+		   LedGreenON();
+           Delay_ms(500);
+		   Step =20;
+		
+			if(Voltage>820)
+			{
+                 Mode=0;
+		         Step=0;
+				LedGreenON();
+				Step=20;
+	        }
+	    return 1 ;  //charge batter
+  	  }
+      else return 0 ; // don't charging batter
+ }
+
 /***************************************************************************
 	*
 	*Function Name:void  CheckRun()
@@ -2380,6 +2401,10 @@ void CheckMode(INT8U Key)
 	   break;
 	   //Æô¶¯/ÔÝÍ£
 	   case 2:
+
+	        Key =5;
+
+	   break ;
 	   case 7:  //key 
 	   {
 	     if(ModeBackup!=0)

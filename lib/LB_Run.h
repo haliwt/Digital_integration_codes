@@ -79,5 +79,6 @@ KAKA_Run_EXT  void  CheckRun();
 KAKA_Run_EXT  INT8U  LowVoltageFlag;
 KAKA_Run_EXT  void CheckMode(INT8U Key);
 KAKA_Run_EXT  void AutoCharge(void); //WT.EDIT
+KAKA_Run_EXT  INT8U  Batter_Charging(void);
 
 #endif

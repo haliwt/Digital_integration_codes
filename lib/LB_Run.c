@@ -506,7 +506,7 @@ void  CheckRun()
 		}
 		break;
 
-        case 0x0D: //To check wheel and barrier wheel of current value
+        case 0x0D: //To check barrier don't crash
 		{
 
 			if((LeftMoveMotorData.Flag==1)||(RightMoveMotorData.Flag==1))
@@ -515,9 +515,7 @@ void  CheckRun()
 				RunStep=0x0;  //Nothing
 				AllStop();
 			}
-			else 
-
-			if((GroundDp[0]>GroundMin)||(GroundDp[2]>GroundMin)||(GroundDp[2]>GroundMin))
+			else if((GroundDp[0]>GroundMin)||(GroundDp[2]>GroundMin)||(GroundDp[2]>GroundMin))
 			{
 				SetXMotor(2,10,20,1,2,10,20,1); // 倒退顺时针运行,to back cw run
 				SetMotorcm(2,10);
@@ -542,7 +540,7 @@ void  CheckRun()
 		break;
 		case 0x0c: //检测 motor run status 
 		{
-			if((LeftMoveMotorData.Flag==1)||(RightMoveMotorData.Flag==1))
+			if((LeftMoveMotorData.Flag==1)||(RightMoveMotorData.Flag==1))//runing 
 			{
 				ImpSecond=0;
 				RunStep=0x1;   //GO straight
@@ -587,7 +585,7 @@ void  CheckRun()
 		case 2: // CCW 90
 		///*
 		     if(ImpSecond>5)
-			 Imp2Time=0;
+			   Imp2Time=0;
 
 			if(GroundDp[2]>GroundMin)
 			{
@@ -1935,7 +1933,8 @@ void  CheckRun()
 		}
 		break;
 		/******************************************************/
-		case 0x3c: //CCW 
+		/******************************************************/
+		case 0x3c: //CCW 模式 3
 		{
 			if(RunMs>70)
 			{
@@ -2393,8 +2392,7 @@ void CheckMode(INT8U Key)
      
 
 	   case 1:
-                Mode = 8 ;
-			   RunMs = 0x64;
+            
 	   
 	   case 4:
 	   {
@@ -2409,10 +2407,8 @@ void CheckMode(INT8U Key)
 	   //启动/暂停
 	   case 2:
 				
-	   //KeyRunTime=0;
-	           Mode=3;
-	           
-			   if(Mode<4)
+	  
+	           if(Mode<4)
 			   {
 			   SetXMotor(1,10,10,1,1,10,10,1);
 			   SetMotorcm(1,10);

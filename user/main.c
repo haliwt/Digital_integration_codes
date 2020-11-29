@@ -156,15 +156,13 @@ void main(void)
 	while(1)
 	{
 
-     
-
-	 KK=ReadKey();
+     KK=ReadKey();
 	 if(KK==4 || KB==1 ){
 		   CheckHandsetIR();
 		   AutoCharge();
 		   KB=1;
 	 }
-	else{
+	 else{
 	  CheckMode(KK); //Mode be selected
 	  CheckGround();
 	  CheckRun();  //Motor run

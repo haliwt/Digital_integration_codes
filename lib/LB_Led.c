@@ -154,7 +154,7 @@ INT8U ReadKey(void)
   if(P3_2==0)
   {
     if(K1temp<200)
-   	 K1temp++;
+   	  K1temp++;
 	   BuzzerON();
   }
   else	
